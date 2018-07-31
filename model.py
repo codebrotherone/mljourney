@@ -31,6 +31,14 @@ class NeuralNetwork(object):
 		# unsure of best place to put this.
 		# self.seed = 0
 		# np.seed(self.seed)
+
+	def _softmax(self, input_value):
+		"""
+		This is a softmax helper function
+		:return: float
+		"""
+		return np.exp(input_value)/float(np.sum(np.exp(input_value), axis=1, ))
+
 	def calc_loss(self):
 		W1, b1, W2, b2 = self.model['W1'], self.model['b1'], self.model['W2'], self.model['b2']
 		# calculate the first layer input
@@ -39,10 +47,19 @@ class NeuralNetwork(object):
 		a1 = np.tanh(z1)
 		# calculate second layer input
 		z2 = np.dot(a1, W2) + b2
-		# this is our yhat value (softmax(z2)
-		# also, calculate the loss by finding actual values
-		a2 = np.exp(z2)/float(np.sum(np.exp(z2), axis=1, ))
-		actual = -np.log
+		# calculate expected scores
+		exp_scores = np.exp(z2)
+		# softmax outputs
+		softmax_prob = self._softmax(z2)
+		num_examples = len(self.X)
+		# let's work on doing the actualy cross entropy formula to find our loss
+		actual_scores = -np.log(softmax_prob[range(num_examples), self.y])
+		loss = np.sum(actual_scores)
+
+		# Add regularization term to loss
+		reg_lambda = .01
+		loss += reg_lambda /2 * (np.sum(np.square(W1)) + np.sum(np.square(W2)))
+		return 1./num_examples*loss
 
 	def __repr__(self):
 		""" For debugging """
