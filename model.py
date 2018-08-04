@@ -5,8 +5,7 @@ Based on : http://www.wildml.com/2015/09/implementing-a-neural-network-from-scra
 		   http://dataaspirant.com/2017/03/07/difference-between-softmax-function-and-sigmoid-function/
 To better understand how neural networks work, I should create one from scratch. Initially this tutorial doesn't
 derive all functionality and takes some things for granted (data generation, as well as some of the `mathy` functions)
-
-In time I hope to update everything that is required. I will also try to write this per google
+but I hope to implement those myself in the future
 ________________________________________________________________________________________________________________________
 """
 
