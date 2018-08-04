@@ -13,7 +13,6 @@ from sklearn.datasets import make_moons
 import matplotlib.pyplot as plt
 import numpy as np
 
-#
 
 class NeuralNetwork(object):
 	"""The model used to generate the artificial neural network
