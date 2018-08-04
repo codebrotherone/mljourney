@@ -86,8 +86,7 @@ class NeuralNetwork(object):
 			# Optionally print the loss.
 			# This is expensive because it uses the whole dataset, so we don't want to do it too often.
 			if print_loss and i % 1000 == 0:
-				print
-				"Loss after iteration {} {}".format(i, self._calc_loss(model))
+				print("Loss after iteration {} {}".format(i, self._calc_loss(model))
 
 		return model
 
